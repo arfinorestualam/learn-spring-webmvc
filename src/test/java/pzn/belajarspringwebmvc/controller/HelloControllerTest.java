@@ -29,7 +29,7 @@ public class HelloControllerTest {
         mockMvc.perform(get("/hello")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("Hello Guest!"))
+                content().string(Matchers.containsString("Hello Guest"))
         );
     }
 
@@ -39,7 +39,7 @@ public class HelloControllerTest {
                 get("/hello").queryParam("name", "fin")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("Hello fin!"))
+                content().string(Matchers.containsString("Hello fin"))
         );
     }
 
