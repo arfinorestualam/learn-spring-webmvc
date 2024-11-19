@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pzn.belajarspringwebmvc.service.HelloService;
 
 import java.io.IOException;
-import java.util.Objects;
 
 @Controller
 public class HelloController {
