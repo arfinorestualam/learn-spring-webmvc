@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pzn.belajarspringwebmvc.service.HelloService;
 
 import java.io.IOException;
@@ -30,14 +31,31 @@ public class HelloController {
 //    }
 
     //update dengan hello service
+//    @Autowired
+//    private HelloService helloService;
+//
+//    @RequestMapping(path= "/hello")
+//    public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//
+//        String name = request.getParameter("name");
+//        String responseBody = helloService.hello(name);
+//        response.getWriter().println(responseBody);
+//    }
+
+    //update request methodnya menjadi get
+    //sehingga jika request methodnya nanti menggunakan post, put, akan terjadi eror 405
     @Autowired
     private HelloService helloService;
 
-    @RequestMapping(path= "/hello")
+    @RequestMapping(path= "/hello", method = RequestMethod.GET)
     public void helloWorld(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String name = request.getParameter("name");
         String responseBody = helloService.hello(name);
         response.getWriter().println(responseBody);
     }
+    //sebenernya bisa dirubah dengan anotattion @GetMapping untuk get agar lebih singkat
+    //nanti berubah jadi : @GetMapping(path= "/hello")
+    //dan ada method lain
+    //@PostMapping untuk post, @PutMapping, @PatchMapping, @DeleteMapping
 }

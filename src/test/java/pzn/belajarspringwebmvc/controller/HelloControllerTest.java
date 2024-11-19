@@ -42,4 +42,13 @@ public class HelloControllerTest {
                 content().string(Matchers.containsString("Hello fin!"))
         );
     }
+
+    @Test
+    void testPostMethod() throws Exception {
+        mockMvc.perform(
+                post("/hello").queryParam("name", "fin")
+        ).andExpectAll(
+                status().isMethodNotAllowed()
+        );
+    }
 }
