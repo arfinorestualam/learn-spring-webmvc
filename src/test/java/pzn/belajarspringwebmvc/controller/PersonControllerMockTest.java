@@ -35,6 +35,12 @@ class PersonControllerMockTest {
                         .param("address.city", "buk")
                         .param("address.country", "ak")
                         .param("address.postalCode", "456")
+                //adding param for regular list (the variable and then index):
+                        .param("hobbies[0]", "code")
+                        .param("hobbies[1]", "read")
+                //adding param for model list (the model, then index, and then the variable):
+                        .param("socialMedias[0].name", "facebook")
+                        .param("socialMedias[0].location", "fb/me.com")
         ).andExpectAll(
                 status().isOk(),
                 content().string(Matchers.containsString("Success John Doe 2 email: john.doe@gmail.com phone: 123" +

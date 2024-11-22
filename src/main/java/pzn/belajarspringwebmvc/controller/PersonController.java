@@ -23,6 +23,9 @@ public class PersonController {
     //using annotation @ModelAttribute for many param.
     //you should make model so it can be attach with the annotation
     public String createPerson(@ModelAttribute CreatePersonRequest request) {
+        //because the model become huge, we can sout the request:
+        System.out.println(request);
+
         //with nested model, we dont need add the nested, the annotation deal with it
         //so we can go to use like this:
         return "Success " +
@@ -35,5 +38,10 @@ public class PersonController {
                 " " + request.getAddress().getCity() +
                 " " + request.getAddress().getCountry() +
                 " " + request.getAddress().getPostalCode();
+        //example how to get reguler list and model list from modelattribut :
+//                //to get regular list
+//                request.getHobbies().get(0) +
+//                //to get list with model
+//                request.getSocialMedias().get(0).getName();
     }
 }
