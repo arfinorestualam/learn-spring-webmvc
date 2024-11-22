@@ -14,4 +14,6 @@ public class CreatePersonRequest {
     private String lastName;
     private String phoneNumber;
     private String email;
+    //add address request to become nested
+    private CreateAddressRequest address;
 }

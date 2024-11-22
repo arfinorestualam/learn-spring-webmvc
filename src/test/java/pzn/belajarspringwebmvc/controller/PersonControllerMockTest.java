@@ -30,9 +30,15 @@ class PersonControllerMockTest {
                         .param("lastName", "2")
                         .param("email", "john.doe@gmail.com")
                         .param("phoneNumber", "123")
+                //adding param for address, cause it's nested, we can call it with . example: address.city
+                        .param("address.street", "jln g")
+                        .param("address.city", "buk")
+                        .param("address.country", "ak")
+                        .param("address.postalCode", "456")
         ).andExpectAll(
                 status().isOk(),
-                content().string(Matchers.containsString("Success John Doe 2 email: john.doe@gmail.com phone: 123"))
+                content().string(Matchers.containsString("Success John Doe 2 email: john.doe@gmail.com phone: 123" +
+                        " address jln g buk ak 456"))
         );
 
     }
