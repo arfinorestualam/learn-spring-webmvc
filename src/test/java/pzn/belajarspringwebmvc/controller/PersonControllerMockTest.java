@@ -70,7 +70,7 @@ class PersonControllerMockTest {
                         .param("socialMedias[0].location", "fb/me.com")
         ).andExpectAll(
                 status().isBadRequest(),
-                content().string(Matchers.containsString("Validation Error"))
+                content().string(Matchers.containsString("You Send Invalid Data"))
         );
 
     }
