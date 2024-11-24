@@ -1,6 +1,7 @@
 package pzn.belajarspringwebmvc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -73,7 +74,9 @@ class ApiControllerMockTest {
                         .accept(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request))
         ).andExpectAll(
-                status().isBadRequest()
+                status().isBadRequest(),
+                //testing error handler
+                content().string(Matchers.containsString("Validation Error"))
         );
     }
 }

@@ -69,7 +69,8 @@ class PersonControllerMockTest {
                         .param("socialMedias[0].name", "facebook")
                         .param("socialMedias[0].location", "fb/me.com")
         ).andExpectAll(
-                status().isBadRequest()
+                status().isBadRequest(),
+                content().string(Matchers.containsString("Validation Error"))
         );
 
     }
