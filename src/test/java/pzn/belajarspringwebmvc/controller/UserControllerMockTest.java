@@ -30,4 +30,15 @@ class UserControllerMockTest {
         );
     }
 
+    //update if user invalid to throw to login page
+    @Test
+    void getUserNotFound() throws Exception {
+        mockMvc.perform(
+                get("/user/current")
+        ).andExpectAll(
+                //is3xx redirection for check is status redirect or not
+                status().is3xxRedirection()
+        );
+    }
+
 }
