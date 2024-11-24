@@ -59,4 +59,21 @@ class ApiControllerMockTest {
                 content().json(jsonRequest)
         );
     }
+
+    //Test for request body is not valid
+    @Test
+    void createPersonValidationError() throws Exception {
+        CreatePersonRequest request = new CreatePersonRequest();
+        request.setMiddleName("Test");
+        request.setLastName("Test");
+
+        mockMvc.perform(
+                post("/api/person")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request))
+        ).andExpectAll(
+                status().isBadRequest()
+        );
+    }
 }

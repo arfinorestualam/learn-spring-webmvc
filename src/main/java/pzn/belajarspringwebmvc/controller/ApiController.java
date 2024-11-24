@@ -1,5 +1,6 @@
 package pzn.belajarspringwebmvc.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,8 @@ public class ApiController {
     )
     @ResponseBody
     //then in here, we dont need String as Response, we can just set it to the model
-    public CreatePersonRequest createPerson(@RequestBody CreatePersonRequest request) {
+    //adding on request body annotation @Valid for automatic check is @NotBlank is true or not
+    public CreatePersonRequest createPerson(@RequestBody @Valid CreatePersonRequest request) {
         return request;
     }
 }
