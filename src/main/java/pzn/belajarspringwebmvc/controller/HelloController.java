@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import pzn.belajarspringwebmvc.service.HelloService;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 public class HelloController {
@@ -70,5 +72,15 @@ public class HelloController {
 
         String responseBody = helloService.hello(name);
         response.getWriter().println(responseBody);
+    }
+
+    //implementing model view with mustache
+    @GetMapping(path = "/web/hello")
+    //it return with model and view, not model, or anything
+    public ModelAndView hello(@RequestParam(name = "name", required = false) String name) {
+        return new ModelAndView("hello", Map.of(
+                "title", "Belajar view",
+                "name", name
+        ));
     }
 }

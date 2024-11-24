@@ -45,4 +45,16 @@ public class HelloControllerMockTest {
                 content().string(Matchers.containsString("Hello World"))
         );
     }
+
+    //test for model and view
+    @Test
+    void helloView() throws Exception {
+        mockMvc.perform(
+                get("/web/hello").queryParam("name", "fin")
+        ).andExpectAll(
+                status().isOk(),
+                content().string(Matchers.containsString("Belajar view")),
+                content().string(Matchers.containsString("Hello fin"))
+        );
+    }
 }
