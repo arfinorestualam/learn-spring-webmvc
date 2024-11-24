@@ -3,6 +3,7 @@ package pzn.belajarspringwebmvc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +13,8 @@ import java.time.Duration;
 //buka browser, karena kita menggunakan local host, tinggal ke
 // localhost:8181/hello, karena kita belom handle untuk localhost:8181
 @SpringBootApplication
+//add this servlet, so the servlet can run in this
+@ServletComponentScan
 public class BelajarSpringWebmvcApplication {
 
     //make rest template, rest template is use if we want to send/call data
