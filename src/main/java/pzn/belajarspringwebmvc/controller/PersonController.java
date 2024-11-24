@@ -3,6 +3,7 @@ package pzn.belajarspringwebmvc.controller;
 //binding class, without using request param
 //because request param is pain if you add more than 2 param
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,8 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     //using annotation @ModelAttribute for many param.
     //you should make model so it can be attach with the annotation
-    public String createPerson(@ModelAttribute CreatePersonRequest request) {
+    //same for @ModelAttribute, we just need add @Valid after the annotation, then add @NotBlank to model
+    public String createPerson(@ModelAttribute @Valid CreatePersonRequest request) {
         //because the model become huge, we can sout the request:
         System.out.println(request);
 
