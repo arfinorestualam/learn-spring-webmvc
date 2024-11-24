@@ -57,4 +57,16 @@ public class HelloControllerMockTest {
                 content().string(Matchers.containsString("Hello fin"))
         );
     }
+
+    //test redirect
+    @Test
+    void helloViewRedirect() throws Exception {
+        mockMvc.perform(
+                //didn't send param, it'll be throw error
+                get("/web/hello")
+        ).andExpectAll(
+                //check if it redirect or not
+                status().is3xxRedirection()
+        );
+    }
 }
